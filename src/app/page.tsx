@@ -1,14 +1,16 @@
-import Link from "next/link";
-import styles from "@/app/ui/home.module.css";
+import { Suspense } from "react";
+import { ServerComponent } from "./_components/ServerComponent";
+import { SkeletonComponent } from "./_components/SkeletonComponent";
+
 
 export default function Home() {
-  const randomId: number = Math.floor(Math.random() * 100);
+  // const randomId: number = Math.floor(Math.random() * 100);
+  console.log("React server component")
   return (
-    <div className="mt-10">
-      <div className={styles.shape}></div>
-      <h1 className="text-4xl font-bold">Hello World</h1>
-      <Link className="text-3xl text-blue-500 block" href="/about">About</Link>
-      <Link className="text-3xl text-blue-500 block" href={`/blog/${randomId}`}>Blog</Link>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Suspense fallback={<SkeletonComponent width="400px" height="300px" />}>
+        <ServerComponent />
+      </Suspense>
     </div>
   );
 }
