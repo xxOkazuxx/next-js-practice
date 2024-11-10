@@ -8,26 +8,9 @@ import { SkeletonComponent } from "./SkeletonComponent";
 export async function ServerComponent() {
     await sleep(1000);
 
-    const boxStyle = {
-        width: "600px",
-        height: "500px",
-        backgroundColor: "purple",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column" as const,
-        gap: "10px",
-    };
-
-    const textStyle = {
-        color: "white",
-        fontSize: "larger",
-        fontWeight: "bold",
-    }
-
     return (
-        <div style={boxStyle}>
-            <p style={textStyle}>Server Component</p>
+        <div className="w-[600px] h-[500px] bg-purple-600 flex justify-center items-center flex-col gap-2.5">
+            <p className="text-white text-lg font-bold">Server Component</p>
             <ClientComponent>
                 <Suspense fallback={<SkeletonComponent width="200px" height="100px" />}>
                     <ServerComponent2 />
